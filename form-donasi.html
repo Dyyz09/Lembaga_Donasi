@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HopeFund - Lembaga Donasi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Animasi Loading */
+    #loading {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .spinner-border {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    /* Efek hover produk */
+    .product-card {
+      transition: 0.3s;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Tabel Responsif */
+    .table-responsive {
+      margin-top: 20px;
+    }
+
+    /* Validasi Form */
+    .was-validated .form-control:invalid,
+    .form-control.is-invalid {
+      border-color: #dc3545;
+    }
+
+    .was-validated .form-control:valid,
+    .form-control.is-valid {
+      border-color: #28a745;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Animasi Loading -->
+  <div id="loading">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="#">HopeFund</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="program-donasi.html">Program</a></li>
+          <li class="nav-item"><a class="nav-link" href="donatur.html">Donatur</a></li>
+          <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+          <li class="nav-item"><a class="nav-link" href="form-donasi.html">Donasi</a></li>
+          <li class="nav-item">
+            <button id="btnLogout" class="btn btn-outline-light ms-2 d-none" onclick="logout()">Logout</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Halaman Program Donasi -->
+  <section id="program" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">Program Donasi</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card product-card h-100">
+            <img src="iya.jpg" class="card-img-top" alt="Donasi Pangan">
+            <div class="card-body">
+              <h5 class="card-title">Donasi Pangan</h5>
+              <p class="card-text">Bantu keluarga prasejahtera dengan paket sembako bulanan.</p>
+              <a href="form-donasi.html" class="btn btn-primary">Donasi Sekarang</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card product-card h-100">
+            <img src="g.jpeg" class="card-img-top" alt="Donasi Pendidikan">
+            <div class="card-body">
+              <h5 class="card-title">Donasi Pendidikan</h5>
+              <p class="card-text">Bantu anak-anak mendapatkan akses pendidikan yang layak.</p>
+              <a href="form-donasi.html" class="btn btn-primary">Donasi Sekarang</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card product-card h-100">
+            <img src="my.jpeg" class="card-img-top" alt="Bantuan Medis">
+            <div class="card-body">
+              <h5 class="card-title">Bantuan Medis</h5>
+              <p class="card-text">Bantu biaya pengobatan untuk warga yang membutuhkan.</p>
+              <a href="form-donasi.html" class="btn btn-primary">Donasi Sekarang</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Halaman Donatur -->
+  <section id="donatur" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Data Donatur</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="table-primary">
+            <tr>
+              <th>Nama</th>
+              <th>Program</th>
+              <th>Jumlah Donasi</th>
+              <th>Tanggal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ahmad S.</td>
+              <td>Donasi Pangan</td>
+              <td>Rp100.000</td>
+              <td>10 Juni 2025</td>
+            </tr>
+            <tr>
+              <td>Siti R.</td>
+              <td>Donasi Pendidikan</td>
+              <td>Rp150.000</td>
+              <td>9 Juni 2025</td>
+            </tr>
+            <tr>
+              <td>Budi T.</td>
+              <td>Bantuan Medis</td>
+              <td>Rp200.000</td>
+              <td>8 Juni 2025</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeri Slider (Ukuran Diperkecil) -->
+  <section id="galeri" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">Galeri Kegiatan</h2>
+      <div class="mx-auto" style="max-width: 800px;">
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="iya.jpg" class="d-block w-100 rounded" alt="Kegiatan 1">
+            </div>
+            <div class="carousel-item">
+              <img src="g.jpeg" class="d-block w-100 rounded" alt="Kegiatan 2">
+            </div>
+            <div class="carousel-item">
+              <img src="my.jpeg" class="d-block w-100 rounded" alt="Kegiatan 3">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Sebelumnya</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Berikutnya</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form Donasi -->
+  <section id="form" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Form Donasi</h2>
+      <form class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="nama" class="form-label">Nama Lengkap</label>
+          <input type="text" class="form-control" id="nama" required>
+          <div class="invalid-feedback">Nama wajib diisi.</div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" required>
+          <div class="invalid-feedback">Format email tidak valid.</div>
+        </div>
+        <div class="mb-3">
+          <label for="program" class="form-label">Pilih Program</label>
+          <select class="form-select" id="program" required>
+            <option value="">Pilih salah satu</option>
+            <option value="pangan">Donasi Pangan</option>
+            <option value="pendidikan">Donasi Pendidikan</option>
+            <option value="medis">Bantuan Medis</option>
+          </select>
+          <div class="invalid-feedback">Program donasi harus dipilih.</div>
+        </div>
+        <div class="mb-3">
+          <label for="jumlah" class="form-label">Jumlah Donasi</label>
+          <input type="number" class="form-control" id="jumlah" required min="10000">
+          <div class="invalid-feedback">Jumlah minimal Rp10.000.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Kirim Donasi</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    // Validasi Form
+    (() => {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+
+    // Cek login + tampilkan tombol logout
+    window.onload = function () {
+      document.getElementById('loading').style.display = 'none';
+
+      const isLogin = localStorage.getItem("userLogin");
+
+      // Tampilkan tombol logout jika login
+      if (isLogin === "donatur" || isLogin === "admin") {
+        document.getElementById("btnLogout").classList.remove("d-none");
+      }
+
+      // Cegah akses ke form jika belum login sebagai donatur
+      if (window.location.pathname.includes("form-donasi") && isLogin !== "donatur") {
+        alert("Anda harus login untuk mengakses form donasi.");
+        window.location.href = "login.html";
+      }
+    };
+
+    // Fungsi Logout
+    function logout() {
+      localStorage.removeItem("userLogin");
+      alert("Anda telah logout.");
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
